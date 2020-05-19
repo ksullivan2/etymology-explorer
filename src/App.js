@@ -4,11 +4,12 @@ import Network from "./Network";
 import dictionary from "./dictionary.json"
 import links from "./links.json"
 
-  
+let randomStartIndex = Math.floor(Math.random() * (dictionary.data.length -1));
+
 class App extends Component {
 
   state = {
-    selectedNode: dictionary.data[dictionary.data.length - 1]
+    selectedNode: dictionary.data[randomStartIndex]
   }
 
   onNodeClick(node) {
