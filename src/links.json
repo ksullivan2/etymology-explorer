@@ -1,0 +1,11 @@
+{"data":[
+    {"target" : "obtener", "source" : "tener"},
+    {"target" : "contener", "source" : "tener"},
+    {"target" : "abstenerse", "source" : "tener"},
+    {"target" : "atener", "source" : "tener"},
+    {"target" : "detener", "source" : "tener"},
+    {"target" : "mantener", "source" : "tener"},
+    {"target" : "entretener", "source" : "tener"},
+    {"target" : "retener", "source" : "tener"},
+    {"target" : "sostener", "source" : "tener"}
+ ]}

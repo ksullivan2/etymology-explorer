@@ -1,5 +1,5 @@
 {
-    "nodes":[
+    "data":[
         {"id" : "tener", "root" : "tener", "prefix" : null, "suffix" : null, "def": "to have"},
         {"id" : "obtener", "root" : "tener", "prefix" : "ob", "suffix" : null, "def": "obtain"},
         {"id" : "contener", "root" : "tener", "prefix" : "con", "suffix" : null, "def": "contain"},
@@ -10,9 +10,6 @@
         {"id" : "entretener", "root" : "tener", "prefix" : "entre", "suffix" : null, "def":"entertain"},
         {"id" : "retener", "root" : "tener", "prefix" : "re", "suffix" : null, "def":"retain"},
         {"id" : "sostener", "root" : "tener", "prefix" : "sos", "suffix" : null, "def":"sustain"}
-    ],
-    "links":[
-        {"source": "tener", "target": "obtener"},
-        {"source": "tener", "target": "contener"}
     ]
+
 }
