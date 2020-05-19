@@ -7,5 +7,8 @@
     {"target" : "mantener", "source" : "tener"},
     {"target" : "entretener", "source" : "tener"},
     {"target" : "retener", "source" : "tener"},
-    {"target" : "sostener", "source" : "tener"}
+    {"target" : "sostener", "source" : "tener"},
+    {"target" : "devolver", "source" : "volver"},
+    {"target" : "envolver", "source" : "volver"},
+    {"target" : "revolver", "source" : "volver"}
  ]}

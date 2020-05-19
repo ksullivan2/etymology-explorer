@@ -9,7 +9,11 @@
         {"id" : "mantener", "root" : "tener", "prefix" : "man", "suffix" : null, "def":"mantain"},
         {"id" : "entretener", "root" : "tener", "prefix" : "entre", "suffix" : null, "def":"entertain"},
         {"id" : "retener", "root" : "tener", "prefix" : "re", "suffix" : null, "def":"retain"},
-        {"id" : "sostener", "root" : "tener", "prefix" : "sos", "suffix" : null, "def":"sustain"}
+        {"id" : "sostener", "root" : "tener", "prefix" : "sos", "suffix" : null, "def":"sustain"},
+        {"id" : "volver", "root" : "volver", "prefix" : null, "suffix" : null, "def":"to return (to a place) or go back"},
+        {"id" : "devolver", "root" : "volver", "prefix" : "de", "suffix" : null, "def":"to give back"},
+        {"id" : "envolver", "root" : "volver", "prefix" : "en", "suffix" : null, "def":"to envelop, to wrap"},
+        {"id" : "revolver", "root" : "volver", "prefix" : "re", "suffix" : null, "def":"to stir, stir up"}
     ]
 
 }
