@@ -1,0 +1,18 @@
+{
+    "nodes":[
+        {"id" : "tener", "root" : "tener", "prefix" : null, "suffix" : null, "def": "to have"},
+        {"id" : "obtener", "root" : "tener", "prefix" : "ob", "suffix" : null, "def": "obtain"},
+        {"id" : "contener", "root" : "tener", "prefix" : "con", "suffix" : null, "def": "contain"},
+        {"id" : "abstenerse", "root" : "tener", "prefix" : "abs", "suffix" : "se", "def":"abstain (reflexive)"},
+        {"id" : "atener", "root" : "tener", "prefix" : "a", "suffix" : null, "def":"attend to (keeping within some figurative boundaries)"},
+        {"id" : "detener", "root" : "tener", "prefix" : "de", "suffix" : null, "def":"detain"},
+        {"id" : "mantener", "root" : "tener", "prefix" : "man", "suffix" : null, "def":"mantain"},
+        {"id" : "entretener", "root" : "tener", "prefix" : "entre", "suffix" : null, "def":"entertain"},
+        {"id" : "retener", "root" : "tener", "prefix" : "re", "suffix" : null, "def":"retain"},
+        {"id" : "sostener", "root" : "tener", "prefix" : "sos", "suffix" : null, "def":"sustain"}
+    ],
+    "links":[
+        {"source": "tener", "target": "obtener"},
+        {"source": "tener", "target": "contener"}
+    ]
+}
