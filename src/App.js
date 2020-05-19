@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-
+import DetailView from "./DetailView";
 import Network from "./Network";
 import dictionary from "./dictionary.json"
 import links from "./links.json"
@@ -8,26 +8,27 @@ import links from "./links.json"
 class App extends Component {
 
   state = {
-    selectedNode: null
+    selectedNode: dictionary.data[1]
   }
 
-  onNodeClick(nodeID) {
-    this.setState({selectedNode: nodeID});
+  onNodeClick(node) {
+    this.setState({selectedNode: node});
   }
 
   render() {
     //"word" is the data that gets passed to the individual node
     let nodes = dictionary.data.map((node, i) => {
-        node.isSelected = node.id === this.state.selectedNode
-        node.onClick = this.onNodeClick.bind(this, node.id)
+        node.isSelected = this.state.selectedNode && node.id === this.state.selectedNode.id 
+        node.onClick = this.onNodeClick.bind(this, node)
         return node;
     });
 
     return (
       <div className="App">
+        <DetailView word={this.state.selectedNode} />
         <Network
           width={800}
-          height={800}
+          height={600}
           network={{
             nodes: nodes,
             links: links.data
