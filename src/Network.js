@@ -48,7 +48,7 @@ class Network extends React.Component {
           })
           .links(this.state.data.links)
       )
-      .force("charge", forceManyBody().strength(-500))
+      .force("charge", forceManyBody().strength(-3000))
       .force(
         "center",
         forceCenter(this.props.width / 2, this.props.height / 2)
