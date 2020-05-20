@@ -1,6 +1,7 @@
 var cheerio = require('cheerio');
 var axios = require('axios');
 const fs = require('fs');
+const readline = require('readline');
 
 
 const ROOT_URL  = 'https://www.learnthat.org/',
@@ -22,16 +23,21 @@ function main() {
 
 function scrapeIndividualPage(rootData, writeStream, failStream, retries = 0) {
 	axios.get(ROOT_URL + rootData.link).then((response) => {
-		rootData.wordList = getWordList(response.data)
+		wordList = getWordList(response.data)
+		if (wordList.length < 1) {
+			throw error('wordlist not fetched')
+		}
+		rootData.wordList  = wordList
 		writeData(rootData, writeStream)
 		console.log("success: " + rootData.root)
 	}).catch(function(err) {
 		if (retries < NUM_RETRIES_FETCH) {
 			console.log("retrying:" + rootData.root)
-			setTimeout(scrapeIndividualPage.bind(null, rootData, writeStream, failStream, retries + 1), 1000)
+			setTimeout(scrapeIndividualPage.bind(null, rootData, writeStream, failStream, retries + 1), 1000 * (retries + 2))
 		} else {
-			writeData(rootData, failStream, true)
-			console.log("FAILURE: " + rootData.root,  err)
+			console.log("FAILURE: " + rootData.root,  err.message)
+			writeData(rootData, failStream, err)
+			
 		}
 	})
 
@@ -73,28 +79,34 @@ function formatForOutput(object) {
 	return 
 }
 
-function writeData(rootData, writeStream, isFailure = false){
-	if (!isFailure){delete rootData.link};
+function writeData(rootData, writeStream, error = null){
+	if (!error){
+		delete rootData.link
+		if (rootData.error) delete rootData.error;
+	} else {
+		rootData.error = error.message
+	};
+
 	let toWrite = JSON.stringify(rootData) + "\n"
 
 	writeStream.write(toWrite);
-
-	writeStream.on('error', function (err) {
-    	console.log('write error', err);
-  	});
 }
 
-main();
+function secondPass() {
+	let readInterface = readline.createInterface({
+		input: fs.createReadStream('data/fail_roots.txt'),
+		console: false
+	})
 
-// //for testing
-// axios.get('https://www.learnthat.org/word_lists/view/13498').then((response2) => {
-// 	 getWordList(response2.data)
-// })
+	writeStream= fs.createWriteStream('data/en_roots2.txt');
+	failStream = fs.createWriteStream('data/fail_roots2.txt')
 
-// axios.get('https://www.learnthat.org/word_lists/view/12990').then((response2) => {
-// 	 console.log('success')
-// }).catch(function (err) {
-// 	console.log(err)
-// })
+	readInterface.on('line', function(line) {
+		scrapeIndividualPage(JSON.parse(line), writeStream, failStream)
+	})
+}
 
-
+// main();
+let writeStream= fs.createWriteStream('data/en_roots2.txt'),
+failStream = fs.createWriteStream('data/fail_roots2.txt')
+scrapeIndividualPage({"link":"word_lists/view/123094","root":"tact, tang","def":"touch"}, writeStream, failStream)

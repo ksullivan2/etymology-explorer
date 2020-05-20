@@ -1,62 +1,82 @@
-{"link":"word_lists/view/13621","root":"un","def":"not,opposite of, lacking"}
-{"link":"word_lists/view/13049","root":"post","def":"after, behind"}
-{"link":"word_lists/view/12973","root":"lip/o","def":"fat"}
-{"link":"word_lists/view/12915","root":"extra, extro","def":"outside, beyond"}
-{"link":"word_lists/view/13069","root":"rhod/o","def":"red"}
-{"link":"word_lists/view/13070","root":"rrh/ea /oea/ag","def":"flow, discharge"}
-{"link":"word_lists/view/13079","root":"self","def":"of, for, or by itself"}
-{"link":"word_lists/view/13611","root":"re","def":"again, back, backward"}
-{"link":"word_lists/view/13003","root":"nav","def":"ship"}
-{"link":"word_lists/view/13594","root":"loc","def":"place"}
-{"link":"word_lists/view/13616","root":"sol","def":"sun"}
-{"link":"word_lists/view/13603","root":"mon/o","def":"one, single, alone"}
-{"link":"word_lists/view/13091","root":"struct","def":"build"}
-{"link":"word_lists/view/12977","root":"lun/a/i","def":"moon"}
-{"link":"word_lists/view/13026","root":"pater,  patr/i","def":"father"}
-{"link":"word_lists/view/12926","root":"fus","def":"pour"}
-{"link":"word_lists/view/13100","root":"terr/a/i","def":"land, earth"}
-{"link":"word_lists/view/13617","root":"son","def":"sound"}
-{"link":"word_lists/view/13105","root":"tract","def":"pull, drag"}
-{"link":"word_lists/view/13099","root":"term/ina","def":"end, limit"}
-{"link":"word_lists/view/13038","root":"phys","def":"nature, medicine, the body"}
-{"link":"word_lists/view/12932","root":"gran","def":"grain"}
-{"link":"word_lists/view/12934","root":"grat","def":"pleasing"}
-{"link":"word_lists/view/13578","root":"dyn/a/am","def":"power, energy, strength"}
-{"link":"word_lists/view/13116","root":"vol/i/u","def":"wish, will"}
-{"link":"word_lists/view/12995","root":"milli","def":"onethousandth"}
-{"link":"word_lists/view/13098","root":"ter, trit","def":"rub"}
-{"link":"word_lists/view/13112","root":"vice","def":"acting in place of,  next in rank"}
-{"link":"word_lists/view/12974","root":"loqu, locu","def":"speak"}
-{"link":"word_lists/view/13036","root":"phot/o","def":"light"}
-{"link":"word_lists/view/13072","root":"rupt","def":"break, burst"}
-{"link":"word_lists/view/13119","root":"xer/o/I","def":"dry"}
-{"link":"word_lists/view/13624","root":"ver/I","def":"truth"}
-{"link":"word_lists/view/13074","root":"sci","def":"know"}
-{"link":"word_lists/view/13115","root":"voc/i","def":"voice, call"}
-{"link":"word_lists/view/12913","root":"ethno","def":"race, people"}
-{"link":"word_lists/view/13067","root":"retro","def":"backward, back"}
-{"link":"word_lists/view/13117","root":"xanth","def":"yellow"}
-{"link":"word_lists/view/12937","root":"hect/o, hecat","def":"hundred"}
-{"link":"word_lists/view/13113","root":"vid","def":"see"}
-{"link":"word_lists/view/12921","root":"for","def":"completely (used to intensify  the meaning of a word)"}
-{"link":"word_lists/view/12983","root":"mater,  matr/i","def":"mother"}
-{"link":"word_lists/view/13516","root":"aud/i/io","def":"hear"}
-{"link":"word_lists/view/13078","root":"sed, sid, sess","def":"sit"}
-{"link":"word_lists/view/13062","root":"quin/t","def":"five, fifth"}
-{"link":"word_lists/view/13014","root":"numer","def":"number"}
-{"link":"word_lists/view/12914","root":"ex","def":"from, out,"}
-{"link":"word_lists/view/12994","root":"migr","def":"move"}
-{"link":"word_lists/view/13514","root":"art","def":"skill"}
-{"link":"word_lists/view/12919","root":"flect","def":"bend"}
-{"link":"word_lists/view/13623","root":"ven/t","def":"come"}
-{"link":"word_lists/view/13615","root":"sol","def":"alone"}
-{"link":"word_lists/view/12911","root":"erg/o","def":"work"}
-{"link":"word_lists/view/13549","root":"com","def":"together, common"}
-{"link":"word_lists/view/13557","root":"cruc","def":"cross"}
-{"link":"word_lists/view/13097","root":"tel/e/o","def":"far, distant, complete"}
-{"link":"word_lists/view/13620","root":"the/o","def":"god"}
-{"link":"word_lists/view/12953","root":"iatr/o","def":"medical care"}
-{"link":"word_lists/view/12944","root":"herbi","def":"grass, plant"}
-{"link":"word_lists/view/13060","root":"quad/r/ri","def":"four"}
-{"link":"word_lists/view/13073","root":"scend","def":"climb, go"}
-{"link":"word_lists/view/13121","root":"zyg/o","def":"pair"}
+{"link":"word_lists/view/13081","root":"sept/i","def":"seven","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13623","root":"ven/t","def":"come","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13077","root":"scrib,  script","def":"write, written","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13602","root":"miss, mit","def":"send, let go","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13116","root":"vol/i/u","def":"wish, will","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13076","root":"scop/e/y","def":"see, examine, observe","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13117","root":"xanth","def":"yellow","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13059","root":"pyr/o","def":"fire, heat","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13075","root":"scler/o","def":"hard","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13108","root":"ultra","def":"beyond, extreme, more than","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13617","root":"son","def":"sound","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13115","root":"voc/i","def":"voice, call","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12974","root":"loqu, locu","def":"speak","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13037","root":"phyll/o","def":"leaf","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13607","root":"out","def":"goes beyond,  surpasses, exceeds","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13071","root":"rub","def":"red","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13029","root":"pel","def":"drive, force","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13063","root":"radic,  radix","def":"root","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13028","root":"ped/i/e","def":"foot, feet","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13616","root":"sol","def":"sun","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12975","root":"luc","def":"light","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13073","root":"scend","def":"climb, go","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13030","root":"pent/a","def":"five","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13620","root":"the/o","def":"god","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13005","root":"neg","def":"no","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13599","root":"meter,  metr/y","def":"measure","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12978","root":"macro","def":"large, great","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12930","root":"giga","def":"a billion","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13613","root":"san","def":"health","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13100","root":"terr/a/i","def":"land, earth","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12996","root":"mob","def":"move","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12980","root":"mal/e","def":"bad, ill, wrong","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13119","root":"xer/o/I","def":"dry","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13593","root":"lite, ite,  lith/o","def":"mineral, rock, fossil","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13626","root":"vince,  vic","def":"conquer","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13060","root":"quad/r/ri","def":"four","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13109","root":"urb","def":"city","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13050","root":"pre","def":"earlier, before, in front of","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13579","root":"dys","def":"abnormal, bad","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13056","root":"pul","def":"urge","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13044","root":"poly","def":"many, more than one","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13601","root":"mis/o","def":"bad, badly, wrong, wrongly,  to hate","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13020","root":"ortho","def":"straight","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13055","root":" pugn/a,  pung ","def":"to fight","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12932","root":"gram","def":"letter, written","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13101","root":"the","def":"put","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13074","root":"sci","def":"know","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12964","root":"kilo","def":"thousand","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13619","root":"sy/m /n/l/s","def":"together, with, same","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12944","root":"herbi","def":"grass, plant","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13618","root":"sub","def":"under, lower than,  inferior to","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12985","root":"medi","def":"middle","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13078","root":"sect","def":"cut","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13098","root":"ter, trit","def":"rub","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12962","root":"junct","def":"join","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13117","root":"vor,  vour","def":"eat","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13040","root":"plas/t/m","def":"to form, development,  forming cells","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13064","root":"radio","def":"radiation, ray","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12928","root":"gen/o/e/ genesis","def":"birth, production,  formation, kind","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12995","root":"milli","def":"onethousandth","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13111","root":"verb","def":"word","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13615","root":"sol","def":"alone","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13033","root":"phag/e","def":"to eat","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13530","root":"caust,  caut","def":"to burn","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13040","root":"plaud, plod, plaus, plos","def":"approve, clap","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12960","root":"ject","def":"throw","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13588","root":"eu","def":"good, well","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13603","root":"mon/o","def":"one, single, alone","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12939","root":"heli/o","def":"sun","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13534","root":"centr/o/i","def":"center","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13089","root":"sta","def":"stand","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13505","root":"andr/o","def":"man, male","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13070","root":"rrh/ea /oea/ag","def":"flow, discharge","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13594","root":"loc","def":"place","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13570","root":"di/s","def":"apart, away,  not, to the opposite","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13522","root":"bi/n","def":"two, twice, once in every two","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13549","root":"com","def":"together, common","error":"Request failed with status code 500"}
+{"link":"word_lists/view/13609","root":"pan","def":"all, any, everyone","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12920","root":"flor/a,  fleur","def":"flower","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12955","root":"idio","def":"peculiar, personal, distinct","error":"Request failed with status code 500"}
+{"link":"word_lists/view/12983","root":"mater,  matr/i","def":"mother","error":"Request failed with status code 500"}
+{"link":"word_lists/view/123094","root":"tact, tang","def":"touch","error":"error is not defined"}
