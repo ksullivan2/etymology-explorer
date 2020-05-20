@@ -2,36 +2,41 @@ var cheerio = require('cheerio');
 var axios = require('axios');
 const fs = require('fs');
 
+
 const ROOT_URL  = 'https://www.learnthat.org/',
-OUTPUT_FILE = 'data/en_roots.txt';
-
-// //for testing
-// axios.get('https://www.learnthat.org/word_lists/view/13498').then((response2) => {
-// 	 getWordList(response2.data)
-// })
-
-// axios.get('https://www.learnthat.org/word_lists/view/12902').then((response2) => {
-// 	 getWordList(response2.data)
-// })
+OUTPUT_FILE = 'data/en_roots.txt',
+NUM_RETRIES_FETCH = 1;
 
 
-axios.get(ROOT_URL + '/pages/view/roots.html').then((response) => {
-	let rootList = getRootList(response.data)
-	for (var i = 0; i < rootList.length; i++) {
-		let rootData = rootList[i]
-		axios.get(ROOT_URL + rootData.link).then((response2) => {
-			rootData.wordList = getWordList(response2.data)
-			delete rootData.link;
-			fs.appendFile(OUTPUT_FILE, formatForOutput(rootData), function (err) {
-			    if (err) {
-			    	console.log("Failed: " + rootData.root)
-			    } else {
-			    	console.log('Saved: ' + rootData.root);	
-			    }
-			});
-		})
-	}
-})
+function main() {
+	axios.get(ROOT_URL + '/pages/view/roots.html').then((response) => {
+		let writeStream = fs.createWriteStream('data/en_roots.txt');
+		let failStream = fs.createWriteStream('data/fail_roots.txt');
+	
+		let rootList = getRootList(response.data)
+		for (var i = 0; i < rootList.length; i++) {
+			setTimeout(scrapeIndividualPage.bind(null, rootList[i], writeStream, failStream), 100)
+		}
+	})
+}
+
+function scrapeIndividualPage(rootData, writeStream, failStream, retries = 0) {
+	axios.get(ROOT_URL + rootData.link).then((response) => {
+		rootData.wordList = getWordList(response.data)
+		writeData(rootData, writeStream)
+		console.log("success: " + rootData.root)
+	}).catch(function(err) {
+		if (retries < NUM_RETRIES_FETCH) {
+			console.log("retrying:" + rootData.root)
+			setTimeout(scrapeIndividualPage.bind(null, rootData, writeStream, failStream, retries + 1), 1000)
+		} else {
+			writeData(rootData, failStream, true)
+			console.log("FAILURE: " + rootData.root,  err)
+		}
+	})
+
+	
+}
 
 function getRootList(html) {
 	let $ = cheerio.load(html);
@@ -65,7 +70,31 @@ function getWordList(html) {
 }
 
 function formatForOutput(object) {
-	return JSON.stringify(object) + "\n"
+	return 
 }
+
+function writeData(rootData, writeStream, isFailure = false){
+	if (!isFailure){delete rootData.link};
+	let toWrite = JSON.stringify(rootData) + "\n"
+
+	writeStream.write(toWrite);
+
+	writeStream.on('error', function (err) {
+    	console.log('write error', err);
+  	});
+}
+
+main();
+
+// //for testing
+// axios.get('https://www.learnthat.org/word_lists/view/13498').then((response2) => {
+// 	 getWordList(response2.data)
+// })
+
+// axios.get('https://www.learnthat.org/word_lists/view/12990').then((response2) => {
+// 	 console.log('success')
+// }).catch(function (err) {
+// 	console.log(err)
+// })
 
 
