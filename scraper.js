@@ -15,7 +15,7 @@ function main() {
 	
 		let rootList = getRootList(response.data)
 		for (var i = 0; i < rootList.length; i++) {
-			setTimeout(scrapeIndividualPage.bind(null, rootList[i], writeStream, failStream), 100)
+			setTimeout(scrapeIndividualPage.bind(null, rootList[i], writeStream, failStream), 1000)
 		}
 	})
 }
