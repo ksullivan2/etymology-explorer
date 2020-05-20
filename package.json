@@ -12,6 +12,7 @@
     "cheerio": "^1.0.0-rc.3",
     "d3-force": "^2.0.1",
     "d3-hierarchy": "^1.1.9",
+    "fs": "0.0.1-security",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
