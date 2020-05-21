@@ -80,7 +80,7 @@ class Backend {
 
   findChildren(datum, isRoot, maxDepth, depth = 0) {
     if (depth >= maxDepth) {
-      return [];
+      return [[],[]];
     }
 
     let children = isRoot ? this.findWordsForRoot(datum) : this.findRootsForWord(datum);
@@ -96,8 +96,13 @@ class Backend {
         target: child,
       })
 
-      // mapped_words.concat(this.findChildren(child, !isRoot, maxDepth, depth+1))
+      let [grandchildren, child_links] = this.findChildren(child, !isRoot, maxDepth, depth+1)
+      console.log('grandchildren', grandchildren)
+      mapped_words = mapped_words.concat(grandchildren)
+      mapped_links = mapped_links.concat(child_links)
     }
+
+
 
     return [mapped_words, mapped_links];
   }

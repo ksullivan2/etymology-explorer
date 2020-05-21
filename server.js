@@ -16,7 +16,7 @@ app.get('/api/hello', (req, res) => {
 app.post('/api/world', (req, res) => {
   console.log(req.body);
   let input = req.body
-  let output = db.findNDegreesOutFrom(input.datum, input.isRoot)
+  let output = db.findNDegreesOutFrom(input.datum, input.isRoot, 2)
 
   res.send(
     output
