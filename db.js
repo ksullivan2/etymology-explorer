@@ -55,18 +55,27 @@ class Backend {
     if (count > 0) return;
 
     let readInterface = readline.createInterface({
-        input: fs.createReadStream('data/en_roots.txt'),
+        input: fs.createReadStream('data/en_roots2.txt'),
         console: false
       })
 
-    let insert = this.db.prepare('INSERT INTO en_root (root, def) VALUES (@root, @def)');
+    let insertRoot = this.db.prepare('INSERT INTO en_root (root, def) VALUES (@root, @def)');
+    let insertWord = this.db.prepare('INSERT OR IGNORE INTO en_word (word, def) VALUES (@word, @def)');
+    let insertPair = this.db.prepare('INSERT INTO en_root_to_word (root, word) VALUES (@root, @word)');
 
     this.db.transaction(() => {
       readInterface.on('line', function(line) {
         line = JSON.parse(line)
         console.log("reading: " + line.root)
+        let root = escape(line.root.trim())
+        let root_def = escape(line.def.trim())
         try {
-          insert.run({"root": line.root, "def": line.def});  
+          insertRoot.run({"root": root, "def": root_def}); 
+          for (var i = 0; i < line.wordList.length; i++) {
+             let word = escape(line.wordList[i].trim());
+             insertWord.run({"word": word, "def": "FIXME"});
+             insertPair.run({"root": root, "word": word})
+           } 
         } catch(err) {
             console.log(err)
         }
