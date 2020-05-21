@@ -72,11 +72,13 @@ class Backend {
       'datum': datum,
     };
     
-    let children = isRoot ? this.findWordsForRoot(datum) : this.findRootsForWord(datum);
-    //depends on the parent's type
-    output.children = children //.map((child) => isRoot ? child.word : child.root)
-
+    output.children = this.findChildren(datum, isRoot)
     return output
+  }
+
+  findChildren(datum, isRoot) {
+    let children = isRoot ? this.findWordsForRoot(datum) : this.findRootsForWord(datum);
+    return children
   }
 
   maybePopulateEnTables() {
