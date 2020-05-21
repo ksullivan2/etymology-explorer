@@ -1,4 +1,6 @@
 const Database = require('better-sqlite3');
+const fs = require('fs');
+const readline = require('readline');
 
 
 
@@ -6,6 +8,7 @@ class Backend {
   constructor() {
     this.db = new Database('etymology.db', { verbose: console.log });
     this.createEngTables()
+    // this.populateEnTables()
   }
 
   close() {//todo check with better-sqlite
@@ -40,6 +43,11 @@ class Backend {
     return row
   }
 
+  findRoot(root) {
+    let row =  this.db.prepare('SELECT * FROM en_root WHERE root = ?').get(root)
+    return row
+  }
+
   //pass in an array of words
   //TODO: pass in definitions
   writeManyWords(words) {
@@ -50,6 +58,25 @@ class Backend {
         insert.run({"word": words_inner[i], "def": "NULL_DEF"});
       }
     })(words);
+  }
+
+  populateEnTables() {
+    let readInterface = readline.createInterface({
+        input: fs.createReadStream('data/en_roots2.txt'),
+        console: false
+      })
+
+    let insert = this.db.prepare('INSERT INTO en_root (root, def) VALUES (@root, @def)');
+
+    this.db.transaction(() => {
+      readInterface.on('line', function(line) {
+        line = JSON.parse(line)
+        console.log("reading: " + line.root)
+        insert.run({"root": line.root, "def": line.def});
+      });
+    })();
+
+      
   }
 
 }
