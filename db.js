@@ -58,8 +58,9 @@ class Backend {
     return stmt.all(word).map((row) =>  row.root)
   }
 
-  findEither(datum, isRoot) {
-    return isRoot ? this.findRoot(datum) : this.findWord(datum)
+  findDefForEither(datum, isRoot) {
+    let row = isRoot ? this.findRoot(datum) : this.findWord(datum)
+    return row.def
   }
 
   //todo optimize
@@ -67,12 +68,13 @@ class Backend {
   findNDegreesOutFrom(datum, isRoot) {
     let output = {
       'isRoot' :isRoot,
-      'data': this.findEither(datum, isRoot),
+      'def': this.findDefForEither(datum, isRoot),
+      'datum': datum,
     };
     
     let children = isRoot ? this.findWordsForRoot(datum) : this.findRootsForWord(datum);
     //depends on the parent's type
-    output.children = children.map((child) => isRoot ? child.word : child.root)
+    output.children = children //.map((child) => isRoot ? child.word : child.root)
 
     return output
   }

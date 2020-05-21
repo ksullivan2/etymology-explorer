@@ -3,7 +3,12 @@ import React from "react";
 // The node rendered by the graph
 class Node extends React.Component {
 
+	componentDidMount() {
+		console.log(this.props.node)
+	}
+
 	render() {
+		// console.log(this.props.node)
 	  	let node = this.props.node;
 	  	let outlineColor = node.isSelected
     		? "black"
