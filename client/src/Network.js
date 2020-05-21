@@ -20,7 +20,6 @@ class Network extends React.Component {
       (!this.force && newProps.network.nodes.length > 0) //initial condition
       || this.shouldComponentUpdate(newProps)
     ){
-      console.log('componentDidUpdate')
       this.setUpForceGraph()
       
     }
@@ -52,8 +51,6 @@ class Network extends React.Component {
         "center",
         forceCenter(this.props.width / 2, this.props.height / 2)
       );
-
-      console.log('componentDidMount', this.force)
 
     // Force-update the component on each force tick
     this.force.on("tick", () => this.forceUpdate());

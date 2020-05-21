@@ -37,8 +37,7 @@ class App extends Component {
       {
         id: nodeData.datum,
         isSelected: true,
-        isRoot: nodeData.isRoot,
-        onClick: this.onNodeClick.bind(this, nodeData.datum, nodeData.isRoot)
+        isRoot: nodeData.isRoot
       }
     ], links = [];
 
@@ -47,6 +46,7 @@ class App extends Component {
       nodes.push({
         id: child,
         isSelected: false,
+        isRoot: !nodeData.isRoot,
         onClick: this.onNodeClick.bind(this, child, !nodeData.isRoot)
       })
       links.push({source: nodeData.datum, target: child})

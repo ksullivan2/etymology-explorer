@@ -7,13 +7,16 @@ class Node extends React.Component {
 	  	let node = this.props.node;
 	  	let outlineColor = node.isSelected
     		? "black"
-    		: "#adadeb";
-    	let fillColor = node.isRoot
+    		: "#adadeb",
+    		 fillColor = node.isRoot
     		? "#b6cdf2"
-    		: "white";
+    		: "white",
+    		outlineWidth = node.isSelected
+    		? "3"
+    		:  "1";
 	    return (
 			<g onClick={node.onClick}>
-				<circle r={40}  stroke={outlineColor} fill={fillColor}/>
+				<circle r={40}  stroke={outlineColor} fill={fillColor} stroke-width={outlineWidth}/>
 				<text textAnchor="middle" dy="0.3em">
 					{node.id}
 				</text>
