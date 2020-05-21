@@ -30,7 +30,7 @@ class Network extends React.Component {
   componentDidUpdate(newProps) {
     if (
       (!this.force && newProps.network.nodes.length > 0) //initial condition
-      || this.haveNodesUpdated(newProps)
+      || this.shouldComponentUpdate(newProps)
     ){
       console.log("redo force graph")
       this.setUpForceGraph()

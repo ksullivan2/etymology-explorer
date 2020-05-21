@@ -7,11 +7,11 @@ class App extends Component {
   state = {
     nodes: [{
         id: 'start_dummy',
-        isSelected: false,
-        onClick: this.onNodeClick.bind(this, 'start_dummy', true)
       }],
     links: [],
     selected: 'start_dummy',
+    def: null,
+    isRoot: false
   }
 
   componentDidMount() {
