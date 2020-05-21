@@ -16,7 +16,7 @@ class Node extends React.Component {
     		:  "1";
 	    return (
 			<g onClick={node.onClick}>
-				<circle r={40}  stroke={outlineColor} fill={fillColor} stroke-width={outlineWidth}/>
+				<circle r={40}  stroke={outlineColor} fill={fillColor} strokeWidth={outlineWidth}/>
 				<text textAnchor="middle" dy="0.3em">
 					{node.id}
 				</text>
