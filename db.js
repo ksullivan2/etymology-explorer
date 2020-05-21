@@ -1,18 +1,14 @@
-const sqlite3 = require('sqlite3').verbose();
+const Database = require('better-sqlite3');
+
 
 
 class Backend {
   constructor() {
-    this.db = new sqlite3.Database(':memory:', (err) => {
-      if (err) {
-        return console.error(err.message);
-      }
-      console.log('Connected to the in-memory SQlite database.');
-    })
+    this.db = new Database('etymology.db', { verbose: console.log });
     this.createEngTables()
   }
 
-  close() {
+  close() {//todo check with better-sqlite
     // close the database connection
     this.db.close((err) => {
       if (err) {
@@ -23,51 +19,37 @@ class Backend {
   }
 
   createEngTables() {
-    let self = this;
-    self.db.serialize(function() {
-      self.db.run(`CREATE TABLE IF NOT EXISTS en_root (
+    this.db.exec(`
+      CREATE TABLE IF NOT EXISTS en_root (
         root TEXT UNIQUE,
         def TEX
-      )`);
-      self.db.run(`CREATE TABLE IF NOT EXISTS en_word (
+      );
+      CREATE TABLE IF NOT EXISTS en_word (
         word TEXT UNIQUE,
         def TEXT
-      )`);
-      self.db.run(`CREATE TABLE IF NOT EXISTS en_root_to_word (
+      );
+      CREATE TABLE IF NOT EXISTS en_root_to_word (
         root INTEGER,
         word INTEGER
-      )`);
-    });
+      )
+    `);
   }
 
-  writeWord(word, def) {
-    let wordID = null;
-    this.db.run(`INSERT INTO en_word (word, def) VALUES (?,?)`, [
-      word, def
-    ], function(err) {
-      if (err) {
-        return console.log(err.message);
-      }
-      // get the last insert id
-      console.log(`A row has been inserted with rowid ${this.lastID}`);
-      wordID = this.lastID;
-    });
-
-    return wordID;
+  findWord(word) {
+    let row =  this.db.prepare('SELECT * FROM en_word WHERE word = ?').get(word)
+    return row
   }
 
   //pass in an array of words
   //TODO: pass in definitions
   writeManyWords(words) {
-    let placeholders = words.map((words) => '(?)').join(',');
-    let sql = 'INSERT INTO en_word(word) VALUES ' + placeholders;
+    let insert = this.db.prepare('INSERT INTO en_word (word, def) VALUES (@word, @def)');
 
-    this.db.run(sql, words, function(err) {
-      if (err) {
-        return console.error(err.message);
+    this.db.transaction((words_inner) => {
+      for (var i = 0; i < words_inner.length; i++) {
+        insert.run({"word": words_inner[i], "def": "NULL_DEF"});
       }
-      console.log(`Rows inserted ${this.changes}`);
-    });
+    })(words);
   }
 
 }
