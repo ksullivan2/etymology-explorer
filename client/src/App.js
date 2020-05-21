@@ -38,8 +38,6 @@ class App extends Component {
   render() {
     let nodeData = this.state.nodeData;
     if (!nodeData) return <div>WAIT</div>
-      console.log(nodeData)
-
 
     let nodes = [
       {
@@ -63,7 +61,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <DetailView word={this.state.selectedNode} />
+        <DetailView data={this.state.nodeData} />
         <Network
           width={1200}
           height={600}

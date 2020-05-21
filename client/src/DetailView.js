@@ -9,16 +9,16 @@ class DetailView extends React.Component {
 	}
 
 	render() {
-	  	let word = this.props.word;
-	  	if (!word) {
+	  	let data = this.props.data;
+	  	if (!data) {
 	  		return null;
 	  	}
 	  	
 	    return (
 			<div style={this.getStyle()}>
-				<h1>{word.id}</h1>
-				<p>Definition: {word.def}</p>
-				<p>Root: {word.root}</p>
+				<h1>{data.datum}</h1>
+				<p>Definition: {data.def}</p>
+				<p>Root: {data.isRoot ? "true" : "false"}</p>
 			</div>
 	)}
 
