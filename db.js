@@ -69,19 +69,20 @@ class Backend {
     let output = {
       'isRoot' :isRoot,
       'def': this.findDefForEither(datum, isRoot),
-      'datum': datum,
+      'selected': datum,
     };
     
     let [nodes, links] = this.findChildren(datum, isRoot, N)
     output.nodes = this.pruneNodes(nodes)
     output.links = this.pruneLinks(links)
-    console.log('counts', links.length, output.links.length)
     return output;
   }
 
-  pruneNodes(nodes) {
+  pruneNodes(nodes, selectedDatum) {
     return nodes.reduce((acc, current) => {
-      const x = acc.find(item => item.datum === current.datum);
+      const x = acc.find(item => {
+        return item.datum === current.datum
+      });
       if (!x) {
         return acc.concat([current]);
       } else {
@@ -123,7 +124,6 @@ class Backend {
       })
 
       let [grandchildren, child_links] = this.findChildren(child, !isRoot, maxDepth, depth+1)
-      console.log('grandchildren', grandchildren)
       mapped_words = mapped_words.concat(grandchildren)
       mapped_links = mapped_links.concat(child_links)
     }

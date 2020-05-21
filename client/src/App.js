@@ -33,24 +33,14 @@ class App extends Component {
   }
 
   setUpNodesAndLinks(output) {
-    console.log('output', output)
-    let nodes = [
-      {
-        id: output.datum,
-        isSelected: true,
-        isRoot: output.isRoot
+    let nodes = output.nodes.map((node) => {
+      return {
+        id: node.datum,
+        isSelected: (node.datum === output.selected),
+        isRoot: node.isRoot,
+        onClick: this.onNodeClick.bind(this, node.datum, node.isRoot)
       }
-    ];
-
-    for (var i = 0; i < output.nodes.length; i++) {
-      let child = output.nodes[i]
-      nodes.push({
-        id: child.datum,
-        isSelected: false,
-        isRoot: child.isRoot,
-        onClick: this.onNodeClick.bind(this, child.datum, child.isRoot)
-      })
-    }
+    })
 
     this.setState((prevState, props) => {
        return {
