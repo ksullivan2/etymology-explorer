@@ -73,9 +73,35 @@ class Backend {
     };
     
     let [nodes, links] = this.findChildren(datum, isRoot, N)
-    output.nodes = nodes
-    output.links = links
+    output.nodes = this.pruneNodes(nodes)
+    output.links = this.pruneLinks(links)
+    console.log('counts', links.length, output.links.length)
     return output;
+  }
+
+  pruneNodes(nodes) {
+    return nodes.reduce((acc, current) => {
+      const x = acc.find(item => item.datum === current.datum);
+      if (!x) {
+        return acc.concat([current]);
+      } else {
+        return acc;
+      }
+    }, []);
+  }
+
+  pruneLinks(links) {
+    return links.reduce((acc, current) => {
+      const x = acc.find(item => {
+        return (item.source === current.source && item.target === current.target)
+         || (item.target === current.source && item.source === current.target)
+      });
+      if (!x) {
+        return acc.concat([current]);
+      } else {
+        return acc;
+      }
+    }, []);
   }
 
   findChildren(datum, isRoot, maxDepth, depth = 0) {
