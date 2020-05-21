@@ -65,7 +65,7 @@ class Backend {
     if (count > 0) return;
 
     let readInterface = readline.createInterface({
-        input: fs.createReadStream('data/en_roots2.txt'),
+        input: fs.createReadStream('data/en_roots.txt'),
         console: false
       })
 
