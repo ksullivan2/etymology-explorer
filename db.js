@@ -65,25 +65,34 @@ class Backend {
 
   //todo optimize
   //FIXME recursion
-  findNDegreesOutFrom(datum, isRoot) {
+  findNDegreesOutFrom(datum, isRoot, N = 1) {
     let output = {
       'isRoot' :isRoot,
       'def': this.findDefForEither(datum, isRoot),
       'datum': datum,
     };
     
-    output.children = this.findChildren(datum, isRoot)
+    let children = this.findChildren(datum, isRoot, N)
+    console.log('children', children.flat())
+    output.children = children.flat()
     return output
   }
 
-  findChildren(datum, isRoot) {
+  findChildren(datum, isRoot, maxDepth, depth = 0, allChildren = []) {
+    if (depth >= maxDepth) {
+      return allChildren;
+    }
+
     let children = isRoot ? this.findWordsForRoot(datum) : this.findRootsForWord(datum);
-    return children.map((child) => { 
+    let mapped = children.map((child) => { 
       return {
         datum: child,
         isRoot: !isRoot
       }
     })
+    return allChildren.concat(mapped, children.map(
+        child => this.findChildren(child, !isRoot, maxDepth, depth+1, allChildren)
+      ))
   }
 
   maybePopulateEnTables() {
