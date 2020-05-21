@@ -10,9 +10,16 @@ import Node from "./Node";
 
 class Network extends React.Component {
 
+  shouldComponentUpdate(newProps, newState) {
+    return this.props.network.nodes[0].id !== newProps.network.nodes[0].id
+  }
+
 // Update force if the width or height of the graph changes
   componentDidUpdate(newProps) {
-    if (!this.force && newProps.network.nodes.length > 0) {
+    if (
+      (!this.force && newProps.network.nodes.length > 0) //initial condition
+      || this.shouldComponentUpdate(newProps)
+    ){
       console.log('componentDidUpdate')
       this.setUpForceGraph()
       
