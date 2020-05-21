@@ -365,4 +365,3 @@
 {"root":"centr/o/i","def":"center","wordList":[" anthropocentric"," centrifugal"," centrifuge"," centripetal"," centrism"," centrist"," concentric"," eccentric"," eccentricity"," egocentric"," egocentricity"," ethnocentric"," ethnocentrism"," geocentric"," anthropocentrism"," centric"," centrifugation"," centroid"," egocentrism"," androcentric"," logocentric"," phallocentric"," ecocentric"," theocentric"," biocentric"]}
 {"root":"pyr/o","def":"fire, heat","wordList":[" pyromaniac"," pyrotechnic"," pyrometer"," pyretic"," pyrograph"," pyromancy"," pyroclastic"]}
 {"root":"the/o","def":"god","wordList":[" theistic"," theocracy"," theocratic"," theodicy"," theologian"," theological"," theology"," theocrat"]}
-

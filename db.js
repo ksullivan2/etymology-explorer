@@ -8,7 +8,7 @@ class Backend {
   constructor() {
     this.db = new Database('etymology.db', { verbose: console.log });
     this.createEngTables()
-    // this.populateEnTables()
+    this.maybePopulateEnTables()
   }
 
   close() {//todo check with better-sqlite
@@ -48,21 +48,13 @@ class Backend {
     return row
   }
 
-  //pass in an array of words
-  //TODO: pass in definitions
-  writeManyWords(words) {
-    let insert = this.db.prepare('INSERT INTO en_word (word, def) VALUES (@word, @def)');
+  maybePopulateEnTables() {
+    let count = this.db.prepare('SELECT count(*) FROM en_root').get();
+    console.log("count", count)
+    if (count > 0) return;
 
-    this.db.transaction((words_inner) => {
-      for (var i = 0; i < words_inner.length; i++) {
-        insert.run({"word": words_inner[i], "def": "NULL_DEF"});
-      }
-    })(words);
-  }
-
-  populateEnTables() {
     let readInterface = readline.createInterface({
-        input: fs.createReadStream('data/en_roots2.txt'),
+        input: fs.createReadStream('data/en_roots.txt'),
         console: false
       })
 
@@ -72,7 +64,12 @@ class Backend {
       readInterface.on('line', function(line) {
         line = JSON.parse(line)
         console.log("reading: " + line.root)
-        insert.run({"root": line.root, "def": line.def});
+        try {
+          insert.run({"root": line.root, "def": line.def});  
+        } catch(err) {
+            console.log(err)
+        }
+        
       });
     })();
 
