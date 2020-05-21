@@ -26,18 +26,16 @@ class Backend {
     let self = this;
     self.db.serialize(function() {
       self.db.run(`CREATE TABLE IF NOT EXISTS en_root (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        root TEXT,
+        root TEXT UNIQUE,
         def TEX
       )`);
       self.db.run(`CREATE TABLE IF NOT EXISTS en_word (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        word TEXT,
+        word TEXT UNIQUE,
         def TEXT
       )`);
       self.db.run(`CREATE TABLE IF NOT EXISTS en_root_to_word (
-        root_id INTEGER,
-        word_id INTEGER
+        root INTEGER,
+        word INTEGER
       )`);
     });
   }

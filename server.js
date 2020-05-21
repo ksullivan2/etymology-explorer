@@ -17,7 +17,7 @@ app.post('/api/world', (req, res) => {
   console.log(req.body);
   let input = req.body.post
 
-  let output = db.writeManyWords([input, "fake"])
+  let output = db.writeManyWords([input])
   res.send(
     `I received your POST request. This is what you sent me: ${input}`,
   );
