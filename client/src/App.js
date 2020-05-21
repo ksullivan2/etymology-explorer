@@ -3,6 +3,9 @@ import DetailView from "./DetailView";
 import Network from "./Network";
 import dictionary from "./dictionary.json"
 import links from "./links.json"
+// import backend from "./backend"
+
+// backend.init()
 
 let randomStartIndex = Math.floor(Math.random() * (dictionary.data.length -1));
 
