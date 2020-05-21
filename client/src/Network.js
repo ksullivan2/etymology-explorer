@@ -9,47 +9,15 @@ import {
 import Node from "./Node";
 
 class Network extends React.Component {
-  constructor(props) {
-    super(props);
-    console.log('constructor', props)
-
-    const links = props.network.links;
-    const nodes = props.network.nodes;
-
-    //formatted this
-    this.state = {
-      data: {
-        nodes,
-        links
-      }
-    };
-  }
-
-
-  static getDerivedStateFromProps(props, state){
-    // console.log('getderived', props)
-    const links = props.network.links;
-    const nodes = props.network.nodes;
-
-    return {
-      data: {
-        nodes,
-        links
-      }
-    };
-  }
-
-  shouldComponentUpdate(newProps, newState) {
-    return newProps.network.nodes.length > 0;
-  }
 
 // Update force if the width or height of the graph changes
   componentDidUpdate(newProps) {
     if (!this.force && newProps.network.nodes.length > 0) {
       console.log('componentDidUpdate')
       this.setUpForceGraph()
-      // this.updateForceGraph();
+      
     }
+    this.updateForceGraph(newProps);
   }
 
   updateForceGraph(newProps) {
@@ -63,14 +31,14 @@ class Network extends React.Component {
 
   // Setup D3 force
   setUpForceGraph() {
-    this.force = forceSimulation(this.state.data.nodes)
+    this.force = forceSimulation(this.props.network.nodes)
       .force(
         "link",
         forceLink()
           .id(function(d) {
             return d.id;
           })
-          .links(this.state.data.links)
+          .links(this.props.network.links)
       )
       .force("charge", forceManyBody().strength(-3000))
       .force(
@@ -98,7 +66,7 @@ class Network extends React.Component {
             height={this.props.height}
             fill="#f9fcff"
           />
-          <Graph graph={this.state.data} nodeComponent={Node} />
+          <Graph graph={this.props.network} nodeComponent={Node} />
         </svg>
       </div>
     );
