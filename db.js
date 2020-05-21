@@ -72,9 +72,10 @@ class Backend {
       'datum': datum,
     };
     
-    let children = this.findChildren(datum, isRoot, N)
-    output.children = children.flat()
-    return output
+    let [nodes, links] = this.findChildren(datum, isRoot, N)
+    output.nodes = nodes
+    output.links = links
+    return output;
   }
 
   findChildren(datum, isRoot, maxDepth, depth = 0) {
@@ -83,17 +84,22 @@ class Backend {
     }
 
     let children = isRoot ? this.findWordsForRoot(datum) : this.findRootsForWord(datum);
-    let mapped = children.map((child) => { 
-      return {
+    let mapped_words = [];
+    let mapped_links = [];
+    for (const child of children) {
+      mapped_words.push({
         datum: child,
         isRoot: !isRoot
-      }
-    })
-    for (let child in children) {
-      mapped.concat(this.findChildren(child, !isRoot, maxDepth, depth+1))
+      })
+      mapped_links.push({
+        source: datum,
+        target: child,
+      })
+
+      // mapped_words.concat(this.findChildren(child, !isRoot, maxDepth, depth+1))
     }
 
-    return mapped;
+    return [mapped_words, mapped_links];
   }
 
   maybePopulateEnTables() {

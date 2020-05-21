@@ -32,31 +32,31 @@ class App extends Component {
     this.setUpNodesAndLinks(JSON.parse(await response.text()) )
   }
 
-  setUpNodesAndLinks(nodeData) {
+  setUpNodesAndLinks(output) {
+    console.log('output', output)
     let nodes = [
       {
-        id: nodeData.datum,
+        id: output.datum,
         isSelected: true,
-        isRoot: nodeData.isRoot
+        isRoot: output.isRoot
       }
-    ], links = [];
+    ];
 
-    for (var i = 0; i < nodeData.children.length; i++) {
-      let child = nodeData.children[i]
+    for (var i = 0; i < output.nodes.length; i++) {
+      let child = output.nodes[i]
       nodes.push({
         id: child.datum,
         isSelected: false,
         isRoot: child.isRoot,
         onClick: this.onNodeClick.bind(this, child.datum, child.isRoot)
       })
-      links.push({source: nodeData.datum, target: child.datum})
     }
 
     this.setState((prevState, props) => {
        return {
-        nodeData: nodeData,
+        nodeData: output,
         nodes:nodes,
-        links: links
+        links: output.links
        }
      });
   }
