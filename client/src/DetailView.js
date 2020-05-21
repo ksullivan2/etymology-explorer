@@ -16,7 +16,7 @@ class DetailView extends React.Component {
 	  	
 	    return (
 			<div style={this.getStyle()}>
-				<h1>{unescape(data.datum)}</h1>
+				<h1>{unescape(data.selected)}</h1>
 				<p>Definition: {unescape(data.def)}</p>
 				<p>Root: {data.isRoot ? "true" : "false"}</p>
 			</div>

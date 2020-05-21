@@ -18,7 +18,7 @@ class Node extends React.Component {
 			<g onClick={node.onClick}>
 				<circle r={40}  stroke={outlineColor} fill={fillColor} strokeWidth={outlineWidth}/>
 				<text textAnchor="middle" dy="0.3em">
-					{node.id}
+					{unescape(node.id)}
 				</text>
 			</g>
 	)}
