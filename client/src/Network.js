@@ -12,9 +12,7 @@ class Network extends React.Component {
 
   shouldComponentUpdate(newProps, newState) {
     return this.haveNodesUpdated(newProps)
-      // || this.props.
-
-    
+      || this.props.selected !== newProps.selected
   }
 
   haveNodesUpdated(newProps) {
@@ -34,6 +32,7 @@ class Network extends React.Component {
       (!this.force && newProps.network.nodes.length > 0) //initial condition
       || this.haveNodesUpdated(newProps)
     ){
+      console.log("redo force graph")
       this.setUpForceGraph()
       
     }

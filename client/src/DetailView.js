@@ -8,17 +8,12 @@ class DetailView extends React.Component {
 		}
 	}
 
-	render() {
-	  	let data = this.props.data;
-	  	if (!data) {
-	  		return null;
-	  	}
-	  	
+	render() {	  	
 	    return (
 			<div style={this.getStyle()}>
-				<h1>{unescape(data.selected)}</h1>
-				<p>Definition: {unescape(data.def)}</p>
-				<p>Root: {data.isRoot ? "true" : "false"}</p>
+				<h1>{unescape(this.props.selected)}</h1>
+				<p>Definition: {unescape(this.props.def)}</p>
+				<p>Root: {this.props.isRoot ? "true" : "false"}</p>
 			</div>
 	)}
 

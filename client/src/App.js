@@ -11,9 +11,7 @@ class App extends Component {
         onClick: this.onNodeClick.bind(this, 'start_dummy', true)
       }],
     links: [],
-    nodeData: {
-      selected: 'start_dummy',
-    },
+    selected: 'start_dummy',
   }
 
   componentDidMount() {
@@ -46,11 +44,9 @@ class App extends Component {
 
     this.setState((prevState, props) => {
        return {
-        nodeData: {
-          selected: output.selected,
-          def: output.def,
-          isRoot: output.isRoot
-        },
+        selected: output.selected,
+        def: output.def,
+        isRoot: output.isRoot,
         nodes:nodes,
         links: output.links
        }
@@ -65,11 +61,15 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <DetailView data={this.state.nodeData} />
+        <DetailView 
+          selected={this.state.selected} 
+          def={this.state.def}
+          isRoot={this.state.isRoot}
+        />
         <Network
           width={1200}
           height={600}
-          selected={this.state.nodeData.selected}
+          selected={this.state.selected}
           network={{
             nodes: this.state.nodes,
             links: this.state.links,
