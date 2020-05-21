@@ -8,7 +8,6 @@ class App extends Component {
 
   state = {
     startDatum: "funct",
-    selectedNode: null,
     nodeData: null,
   }
 
@@ -32,9 +31,6 @@ class App extends Component {
   }
 
   onNodeClick(datum, isRoot) {
-    this.setState({
-      selectedNode: datum,
-    });
     this.refreshData(datum, isRoot)
   }
 
@@ -49,6 +45,7 @@ class App extends Component {
       {
         id: nodeData.datum,
         isSelected: true,
+        isRoot: nodeData.isRoot,
         onClick: this.onNodeClick.bind(this, nodeData.datum, nodeData.isRoot)
       }
     ], links = [];
@@ -61,7 +58,6 @@ class App extends Component {
         onClick: this.onNodeClick.bind(this, child, !nodeData.isRoot)
       })
       links.push({source: nodeData.datum, target: child})
-
     }
     
 
