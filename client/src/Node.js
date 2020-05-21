@@ -1,20 +1,18 @@
 import React from "react";
 
 // The node rendered by the graph
-class Word extends React.Component {
+class Node extends React.Component {
 
 	render() {
-	  	let word = this.props.node;
-	  	let outlineColor = word.isSelected
+	  	let node = this.props.node;
+	  	let outlineColor = node.isSelected
     		? "black"
     		: "#adadeb";
 	    return (
-			<g onClick={word.onClick}>
+			<g onClick={node.onClick}>
 				<circle r={40}  stroke={outlineColor} fill="white"/>
 				<text textAnchor="middle" dy="0.3em">
-					{word.prefix}
-					<tspan fill="#ff00ff">{word.root}</tspan>
-					{word.suffix}
+					{node.id}
 				</text>
 			</g>
 	)}
@@ -24,4 +22,4 @@ class Word extends React.Component {
 
 }
 
-export default Word;
+export default Node;

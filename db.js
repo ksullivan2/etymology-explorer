@@ -58,6 +58,25 @@ class Backend {
     return stmt.all(word).map((row) =>  row.root)
   }
 
+  findEither(datum, isRoot) {
+    return isRoot ? this.findRoot(datum) : this.findWord(datum)
+  }
+
+  //todo optimize
+  //FIXME recursion
+  findNDegreesOutFrom(datum, isRoot) {
+    let output = {
+      'isRoot' :isRoot,
+      'data': this.findEither(datum, isRoot),
+    };
+    
+    let children = isRoot ? this.findWordsForRoot(datum) : this.findRootsForWord(datum);
+    //depends on the parent's type
+    output.children = children.map((child) => isRoot ? child.word : child.root)
+
+    return output
+  }
+
   maybePopulateEnTables() {
     let row = this.db.prepare('SELECT COUNT(ALL) FROM en_root').get(),
       count = Object.entries(row)[0][1]; //there has got to be a better way

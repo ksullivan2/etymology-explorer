@@ -6,7 +6,7 @@ import {
   forceManyBody,
   forceSimulation
 } from "d3-force";
-import Word from "./Word";
+import Node from "./Node";
 
 class Network extends React.Component {
   constructor(props) {
@@ -71,7 +71,7 @@ class Network extends React.Component {
             height={this.props.height}
             fill="#f9fcff"
           />
-          <Graph graph={this.state.data} nodeComponent={Word} />
+          <Graph graph={this.state.data} nodeComponent={Node} />
         </svg>
       </div>
     );
