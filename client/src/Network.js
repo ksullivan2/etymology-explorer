@@ -11,10 +11,12 @@ import Node from "./Node";
 class Network extends React.Component {
   constructor(props) {
     super(props);
+    console.log('constructor', props)
 
     const links = props.network.links;
     const nodes = props.network.nodes;
 
+    //formatted this
     this.state = {
       data: {
         nodes,
@@ -22,23 +24,45 @@ class Network extends React.Component {
       }
     };
   }
+
+
+  static getDerivedStateFromProps(props, state){
+    // console.log('getderived', props)
+    const links = props.network.links;
+    const nodes = props.network.nodes;
+
+    return {
+      data: {
+        nodes,
+        links
+      }
+    };
+  }
+
+  shouldComponentUpdate(newProps, newState) {
+    return newProps.network.nodes.length > 0;
+  }
+
 // Update force if the width or height of the graph changes
   componentDidUpdate(newProps) {
-    if (
-      newProps.width !== this.props.width ||
-      newProps.height !== this.props.height
-    ) {
-      this.force = this.force
-        .force("center", forceCenter(
-          newProps.width / 2,
-          newProps.height / 2
-        ))
-        .restart();
+    if (!this.force && newProps.network.nodes.length > 0) {
+      console.log('componentDidUpdate')
+      this.setUpForceGraph()
+      // this.updateForceGraph();
     }
   }
 
+  updateForceGraph(newProps) {
+    this.force = this.force
+      .force("center", forceCenter(
+        newProps.width / 2,
+        newProps.height / 2
+      ))
+      .restart();
+  }
+
   // Setup D3 force
-  componentDidMount() {
+  setUpForceGraph() {
     this.force = forceSimulation(this.state.data.nodes)
       .force(
         "link",
@@ -54,9 +78,12 @@ class Network extends React.Component {
         forceCenter(this.props.width / 2, this.props.height / 2)
       );
 
+      console.log('componentDidMount', this.force)
+
     // Force-update the component on each force tick
     this.force.on("tick", () => this.forceUpdate());
   }
+
 
   render() {
     if (!this.force) {

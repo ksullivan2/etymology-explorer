@@ -5,7 +5,11 @@ import Network from "./Network";
 class App extends Component {
 
   state = {
-    nodes: [],
+    nodes: [{
+        id: 'start_dummy',
+        isSelected: false,
+        onClick: this.onNodeClick.bind(this, 'start_dummy', true)
+      }],
     links: [],
     nodeData: null,
   }
@@ -29,7 +33,6 @@ class App extends Component {
   }
 
   setUpNodesAndLinks(nodeData) {
-    console.log("DATA IS HERE", nodeData)
     let nodes = [
       {
         id: nodeData.datum,
@@ -55,7 +58,7 @@ class App extends Component {
         nodes:nodes,
         links: links
        }
-     }, () => console.log(this.state));
+     });
   }
 
   onNodeClick(datum, isRoot) {
