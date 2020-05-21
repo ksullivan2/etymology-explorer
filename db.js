@@ -49,8 +49,9 @@ class Backend {
   }
 
   maybePopulateEnTables() {
-    let count = this.db.prepare('SELECT count(*) FROM en_root').get();
-    console.log("count", count)
+    let row = this.db.prepare('SELECT COUNT(ALL) FROM en_root').get(),
+      count = Object.entries(row)[0][1]; //there has got to be a better way
+
     if (count > 0) return;
 
     let readInterface = readline.createInterface({
@@ -72,8 +73,6 @@ class Backend {
         
       });
     })();
-
-      
   }
 
 }
