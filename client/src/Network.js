@@ -4,7 +4,8 @@ import {
   forceCenter,
   forceLink,
   forceManyBody,
-  forceSimulation
+  forceSimulation,
+  forceCollide
 } from "d3-force";
 import Node from "./Node";
 
@@ -51,6 +52,7 @@ class Network extends React.Component {
   // Setup D3 force
   setUpForceGraph() {
     this.force = forceSimulation(this.props.network.nodes)
+      //sets up links
       .force(
         "link",
         forceLink()
@@ -59,11 +61,22 @@ class Network extends React.Component {
           })
           .links(this.props.network.links)
       )
-      .force("charge", forceManyBody().strength(-3000))
+      //sets up charges between nodes (- is repel)
+      .force(
+        "charge", 
+        forceManyBody().strength(1)
+      )
+      //sets up a central force
       .force(
         "center",
         forceCenter(this.props.width / 2, this.props.height / 2)
-      );
+      )
+      //keeps nodes from overlapping
+      .force(
+        'collision',
+        forceCollide([50])
+        )
+      ;
 
     // Force-update the component on each force tick
     this.force.on("tick", () => this.forceUpdate());
