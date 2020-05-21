@@ -11,14 +11,28 @@ import Node from "./Node";
 class Network extends React.Component {
 
   shouldComponentUpdate(newProps, newState) {
-    return this.props.network.nodes[0].id !== newProps.network.nodes[0].id
+    return this.haveNodesUpdated(newProps)
+      // || this.props.
+
+    
+  }
+
+  haveNodesUpdated(newProps) {
+    let oldNodes = this.props.network.nodes.map((node) => node.id),
+      newNodes = newProps.network.nodes.map((node) => node.id);
+
+    let difference = oldNodes
+       .filter(x => !newNodes.includes(x))
+       .concat(newNodes.filter(x => !oldNodes.includes(x)))
+
+    return difference.length > 0
   }
 
 // Update force if the width or height of the graph changes
   componentDidUpdate(newProps) {
     if (
       (!this.force && newProps.network.nodes.length > 0) //initial condition
-      || this.shouldComponentUpdate(newProps)
+      || this.haveNodesUpdated(newProps)
     ){
       this.setUpForceGraph()
       

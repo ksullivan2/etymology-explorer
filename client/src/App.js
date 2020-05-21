@@ -11,7 +11,9 @@ class App extends Component {
         onClick: this.onNodeClick.bind(this, 'start_dummy', true)
       }],
     links: [],
-    nodeData: null,
+    nodeData: {
+      selected: 'start_dummy',
+    },
   }
 
   componentDidMount() {
@@ -44,7 +46,11 @@ class App extends Component {
 
     this.setState((prevState, props) => {
        return {
-        nodeData: output,
+        nodeData: {
+          selected: output.selected,
+          def: output.def,
+          isRoot: output.isRoot
+        },
         nodes:nodes,
         links: output.links
        }
@@ -63,6 +69,7 @@ class App extends Component {
         <Network
           width={1200}
           height={600}
+          selected={this.state.nodeData.selected}
           network={{
             nodes: this.state.nodes,
             links: this.state.links,
