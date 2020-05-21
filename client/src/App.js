@@ -44,12 +44,12 @@ class App extends Component {
     for (var i = 0; i < nodeData.children.length; i++) {
       let child = nodeData.children[i]
       nodes.push({
-        id: child,
+        id: child.datum,
         isSelected: false,
-        isRoot: !nodeData.isRoot,
-        onClick: this.onNodeClick.bind(this, child, !nodeData.isRoot)
+        isRoot: child.isRoot,
+        onClick: this.onNodeClick.bind(this, child.datum, child.isRoot)
       })
-      links.push({source: nodeData.datum, target: child})
+      links.push({source: nodeData.datum, target: child.datum})
     }
 
     this.setState((prevState, props) => {
