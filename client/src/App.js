@@ -1,20 +1,19 @@
 import React, {Component} from "react";
 import DetailView from "./DetailView";
 import Network from "./Network";
-import dictionary from "./dictionary.json"
-import links from "./links.json"
 
 class App extends Component {
 
   state = {
-    startDatum: "funct",
+    nodes: [],
+    links: [],
     nodeData: null,
   }
 
   componentDidMount() {
-    this.refreshData(this.state.startDatum, true)
+    //gotta start somewhere
+    this.refreshData("funct", true)
   }
-
   
   refreshData = async (datum, isRoot) => {
     const response = await fetch('/api/world', {
@@ -24,21 +23,13 @@ class App extends Component {
       },
       body: JSON.stringify({ datum: datum, isRoot: isRoot }),
     });
-    const data = await response.text();
-    
+ 
     //data is the output of findNDegreesOutFrom
-    this.setState({ nodeData: JSON.parse(data) });
+    this.setUpNodesAndLinks(JSON.parse(await response.text()) )
   }
 
-  onNodeClick(datum, isRoot) {
-    this.refreshData(datum, isRoot)
-  }
-
-
-  render() {
-    let nodeData = this.state.nodeData;
-    if (!nodeData) return <div>WAIT</div>
-
+  setUpNodesAndLinks(nodeData) {
+    console.log("DATA IS HERE", nodeData)
     let nodes = [
       {
         id: nodeData.datum,
@@ -57,8 +48,22 @@ class App extends Component {
       })
       links.push({source: nodeData.datum, target: child})
     }
-    
 
+    this.setState((prevState, props) => {
+       return {
+        nodeData: nodeData,
+        nodes:nodes,
+        links: links
+       }
+     }, () => console.log(this.state));
+  }
+
+  onNodeClick(datum, isRoot) {
+    this.refreshData(datum, isRoot)
+  }
+
+
+  render() {
     return (
       <div className="App">
         <DetailView data={this.state.nodeData} />
@@ -66,15 +71,13 @@ class App extends Component {
           width={1200}
           height={600}
           network={{
-            nodes: nodes,
-            links: links,
+            nodes: this.state.nodes,
+            links: this.state.links,
           }}
         />
       </div>
     );
   }
-
-  
 }
 
 export default App;
