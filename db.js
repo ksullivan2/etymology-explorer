@@ -48,6 +48,16 @@ class Backend {
     return row
   }
 
+  findWordsForRoot(root) {
+    const stmt = this.db.prepare('SELECT * FROM en_root_to_word WHERE root = ?');
+    return stmt.all(root).map((row) =>  row.word)
+  }
+
+  findRootsForWord(word) {
+    const stmt = this.db.prepare('SELECT * FROM en_root_to_word WHERE word = ?');
+    return stmt.all(word).map((row) =>  row.root)
+  }
+
   maybePopulateEnTables() {
     let row = this.db.prepare('SELECT COUNT(ALL) FROM en_root').get(),
       count = Object.entries(row)[0][1]; //there has got to be a better way
