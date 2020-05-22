@@ -5,7 +5,7 @@ import RootLi from "./RootLi";
 class RootsList extends React.Component {
 	getStyle() {
 		return {
-			position:"absolute", 
+			position:"fixed", 
 			float:"right",
 		}
 	}

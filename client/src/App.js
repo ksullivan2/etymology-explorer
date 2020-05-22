@@ -92,6 +92,7 @@ class App extends Component {
           def={this.state.def}
           isRoot={this.state.isRoot}
         />
+         <RootsList roots={this.state.all_roots} />
         <Network
           width={1200}
           height={600}
@@ -101,7 +102,7 @@ class App extends Component {
             links: this.state.links,
           }}
         />
-        <RootsList roots={this.state.all_roots} />
+       
       </div>
     );
   }
