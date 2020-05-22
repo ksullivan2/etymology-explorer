@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import DetailView from "./DetailView";
 import Network from "./Network";
+import RootsList from "./RootsList";
 
 class App extends Component {
 
@@ -11,12 +12,37 @@ class App extends Component {
     links: [],
     selected: 'start_dummy',
     def: null,
-    isRoot: false
+    isRoot: false,
+    all_roots: null
   }
 
   componentDidMount() {
     //gotta start somewhere
     this.refreshData("funct", true)
+
+    this.getAllRoots()
+
+  }
+
+  getAllRoots = async() => {
+    const response = await fetch('/api/roots', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    var self = this;
+
+    var all_roots =  JSON.parse(await response.text()).roots;
+    all_roots = all_roots.map(root => {
+      return {
+        root: root,
+        onClick: self.onNodeClick.bind(self, root, true)
+      }
+    })
+
+     this.setState({all_roots: all_roots})
+
   }
   
   refreshData = async (datum, isRoot) => {
@@ -75,6 +101,7 @@ class App extends Component {
             links: this.state.links,
           }}
         />
+        <RootsList roots={this.state.all_roots} />
       </div>
     );
   }

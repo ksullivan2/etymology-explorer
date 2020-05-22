@@ -38,6 +38,11 @@ class Backend {
     `);
   }
 
+  getAllRoots() {
+    const stmt = this.db.prepare('SELECT * FROM en_root');
+    return stmt.all().map((row) =>  row.root)
+  }
+
   findWord(word) {
     let row =  this.db.prepare('SELECT * FROM en_word WHERE word = ?').get(word)
     return row
